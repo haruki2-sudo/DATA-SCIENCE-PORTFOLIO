@@ -43,4 +43,4 @@ in between. Drop me a message!
 
 ---
 
-© 2024 **Vincent Omar Galorio** — BS Data Science
+© 2026 **Vincent Omar Galorio** — BS Data Science

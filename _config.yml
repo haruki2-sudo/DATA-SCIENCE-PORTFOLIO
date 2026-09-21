@@ -1,6 +1,6 @@
-title: Vincent Omar Galorio — Data Science Portfolio
+title: Data Science Portfolio
 author: Vincent Omar Galorio
-logo: ""   # optional: add a small square image (e.g. images/logo.png) and update this path once it exists
+logo: ""   # optional: 
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
