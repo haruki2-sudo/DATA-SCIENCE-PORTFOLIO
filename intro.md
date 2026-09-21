@@ -19,10 +19,6 @@ student. I'm passionate about turning raw data into meaningful insights, buildin
 and constantly leveling up both in code and in life. I also spend a lot of time designing sports
 jerseys, and I enjoy designing 3D visualizations and renders for architecture projects.
 
-| | |
-|---|---|
-| **3rd Year** | Data Science |
-| **24** | Years Old |
 
 **Interests / Skills:** Gaming · Physical Activities · Sports · Data Science · Web Dev · Jersey Design · 3D Rendering
 
