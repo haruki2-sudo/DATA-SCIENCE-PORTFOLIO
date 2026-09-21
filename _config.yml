@@ -1,0 +1,31 @@
+title: Vincent Omar Galorio — Data Science Portfolio
+author: Vincent Omar Galorio
+logo: ""   # optional: add a small square image (e.g. images/logo.png) and update this path once it exists
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: "off"
+
+# Define the name of the LaTeX output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/haruki2-sudo/ds-portfolio
+  branch: main
+
+# Add GitHub buttons to your book
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+# Custom colors/styling — loads _static/custom.css
+sphinx:
+  config:
+    html_css_files:
+      - custom.css
+    html_js_files:
+      - custom.js

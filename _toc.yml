@@ -1,0 +1,8 @@
+format: jb-book
+root: intro
+chapters:
+  - file: projects
+    sections:
+      - file: laboratory_task_2
+      - file: laboratory_task_3
+      - file: laboratory_task_4

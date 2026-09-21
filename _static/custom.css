@@ -1,0 +1,229 @@
+/* =========================================================
+   Vinland-inspired theme — Norse parchment, iron & blood-red
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --vinland-parchment: #f3ead9;
+  --vinland-parchment-dark: #e6d9bf;
+  --vinland-iron: #1f2b38;
+  --vinland-iron-light: #2f4257;
+  --vinland-blood: #7a1f1f;
+  --vinland-blood-bright: #a4302f;
+  --vinland-leather: #5b3a29;
+  --vinland-gold: #a9822c;
+  --vinland-text: #2a2420;
+}
+
+/* Base page tone */
+.bd-content, .bd-article-container {
+  background-color: var(--vinland-parchment) !important;
+}
+
+body, p, li, .bd-content {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.08rem;
+  color: var(--vinland-text) !important;
+}
+
+/* HEADINGS — must beat .bd-article-container h1/h2/h3 (theme sets color: var(--pst-color-muted) there,
+   which is more specific than a plain h1 selector and was silently winning). */
+.bd-article-container h1,
+.bd-article-container h2,
+.bd-article-container h3,
+.bd-article-container h4,
+.bd-article h1,
+.bd-article h2,
+.bd-article h3,
+.bd-article h4,
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', 'Times New Roman', serif !important;
+  color: var(--vinland-iron) !important;
+  letter-spacing: 0.03em;
+  border-bottom: 2px solid var(--vinland-leather);
+  padding-bottom: 0.3rem;
+}
+
+.bd-article-container h1, .bd-article h1, h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  border-bottom: 3px solid var(--vinland-blood) !important;
+}
+
+/* Links */
+.bd-article-container a, .bd-content a, a {
+  color: var(--vinland-gold) !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(169, 130, 44, 0.4);
+}
+.bd-article-container a:hover, .bd-content a:hover, a:hover {
+  color: var(--vinland-blood-bright) !important;
+  border-bottom-color: var(--vinland-blood-bright);
+}
+
+/* Tables */
+table, table.docutils {
+  background-color: var(--vinland-parchment-dark) !important;
+  border: 1px solid var(--vinland-leather) !important;
+  border-radius: 2px;
+}
+table thead th, table.docutils thead th, table th {
+  background-color: var(--vinland-iron) !important;
+  color: var(--vinland-parchment) !important;
+  font-family: 'Cinzel', serif !important;
+  border-color: var(--vinland-leather) !important;
+}
+table td, table.docutils td {
+  border-color: var(--vinland-leather) !important;
+  color: var(--vinland-text) !important;
+}
+
+/* Blockquotes */
+.bd-article-container blockquote, blockquote {
+  border-left: 4px solid var(--vinland-blood) !important;
+  background-color: var(--vinland-parchment-dark) !important;
+  padding: 0.75rem 1.2rem;
+  font-style: italic;
+}
+.bd-article-container blockquote p, blockquote p {
+  color: var(--vinland-text) !important;
+}
+
+/* Code blocks — the <pre> tag has its OWN background-color set by the theme,
+   which sits on top of and completely hides .highlight's background since it
+   fills the exact same area. Must override pre's background directly too. */
+.highlight {
+  background-color: var(--vinland-iron) !important;
+  border: 1px solid var(--vinland-leather);
+  border-radius: 4px;
+}
+.highlight pre,
+.cell_input .highlight pre,
+.cell_input pre {
+  background-color: var(--vinland-iron) !important;
+  color: #e8d9b5 !important;
+  font-family: 'Courier New', monospace;
+}
+.highlight * {
+  color: #e8d9b5 !important;
+}
+/* The outer .cell_input wrapper itself (padding area around .highlight) */
+div.cell > div.cell_input {
+  background-color: var(--vinland-iron) !important;
+}
+
+/* Profile photo */
+.profile-photo {
+  border: 4px solid var(--vinland-leather);
+  border-radius: 4px;
+  max-width: 260px;
+  filter: sepia(15%) contrast(1.05);
+  box-shadow: 0 6px 18px rgba(31, 43, 56, 0.35);
+  margin: 1rem 0;
+}
+
+/* Left primary sidebar (nav) */
+.bd-sidebar-primary {
+  background-color: var(--vinland-iron) !important;
+}
+.bd-sidebar-primary a, .bd-sidebar-primary .toctree-l1 > a, nav.bd-links li > a {
+  color: var(--vinland-parchment) !important;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+}
+.bd-sidebar-primary a:hover, nav.bd-links li > a:hover {
+  color: var(--vinland-gold) !important;
+}
+.bd-sidebar-primary .sidebar-header-items__title {
+  color: var(--vinland-parchment) !important;
+}
+.bd-sidebar-primary .navbar-brand,
+.bd-sidebar-primary .navbar-brand.logo,
+.bd-sidebar-primary .logo__title,
+.bd-sidebar-primary p.title {
+  color: var(--vinland-parchment) !important;
+  font-family: 'Cinzel', serif !important;
+}
+
+/* Right secondary sidebar ("On this page" / Contents) — was unstyled black-on-black */
+.bd-sidebar-secondary {
+  background-color: var(--vinland-iron) !important;
+}
+.bd-sidebar-secondary .page-toc .onthispage,
+.bd-sidebar-secondary a,
+.bd-sidebar-secondary .toc-entry a {
+  color: var(--vinland-parchment) !important;
+  font-family: 'Cinzel', serif;
+}
+.bd-sidebar-secondary a:hover {
+  color: var(--vinland-gold) !important;
+}
+.sidebar-secondary-item {
+  border-left-color: var(--vinland-leather) !important;
+}
+
+/* Top navbar */
+.bd-header {
+  background-color: var(--vinland-iron) !important;
+  border-bottom: 3px solid var(--vinland-blood);
+}
+.bd-header a, .bd-header .navbar-brand, .bd-header .navbar-brand p {
+  color: var(--vinland-parchment) !important;
+  font-family: 'Cinzel', serif;
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 2px solid var(--vinland-leather);
+  margin: 2rem 0;
+}
+
+/* ===== Remove the top navbar entirely ===== */
+.bd-header {
+  display: none !important;
+}
+:root {
+  --pst-header-height: 0px !important;
+}
+.bd-sidebar-primary, .bd-sidebar-secondary {
+  top: 0 !important;
+  max-height: 100vh !important;
+}
+
+/* ===== Remove the right-hand secondary sidebar ("On this page") ===== */
+.bd-sidebar-secondary {
+  display: none !important;
+}
+/* Let the article fill the space that sidebar used to take */
+.bd-main .bd-content .bd-article-container {
+  max-width: 100% !important;
+}
+
+/* ===== Working sidebar collapse toggle (see custom.js) ===== */
+body.vinland-sidebar-collapsed .bd-sidebar-primary {
+  display: none !important;
+}
+body.vinland-sidebar-collapsed .bd-main .bd-content .bd-article-container {
+  max-width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Task instruction callout boxes (alert-block-success in notebooks) —
+   override Bootstrap's default mint-green so it matches the theme */
+.alert-success, div.alert.alert-success {
+  background-color: var(--vinland-parchment-dark) !important;
+  border: 1px solid var(--vinland-leather) !important;
+  border-left: 4px solid var(--vinland-blood) !important;
+  color: var(--vinland-text) !important;
+}
+.alert-success h4, .alert-success strong {
+  color: var(--vinland-iron) !important;
+  font-family: 'Cinzel', serif;
+}
+.alert-success code, .alert-success pre {
+  background-color: var(--vinland-iron) !important;
+  color: #e8d9b5 !important;
+}
