@@ -242,6 +242,8 @@
 
 
 
+<li class="toctree-l2"><a class="reference internal" href="laboratory_task_5.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Laboratory_Exercise.html">Laboratory Exercise: Image Classification Using Pre-trained Models</a></li>
 </ul>
 </details></li>
 </ul>
@@ -437,6 +439,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-fundamentals">Deep Learning Fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-vision">Computer Vision</a></li>
 </ul>
             </nav>
         </div>
@@ -451,20 +454,35 @@
   <section class="tex2jax_ignore mathjax_ignore" id="projects">
 <h1>Projects<a class="headerlink" href="#projects" title="Link to this heading">#</a></h1>
 <p>Coursework and lab exercises from my Data Science and Deep Learning classes, with notebooks
-that walk through the full process from theory to working code.</p>
+that walk through the full process — from theory to working code.</p>
 <section id="deep-learning-fundamentals">
 <h2>Deep Learning Fundamentals<a class="headerlink" href="#deep-learning-fundamentals" title="Link to this heading">#</a></h2>
+<p>Four lab exercises covering the core mechanics of neural networks, from manual forward/backward
+propagation to training a real model in PyTorch and working with tensors.</p>
 <ul class="simple">
 <li><p><strong><a class="reference internal" href="laboratory_task_2.html"><span class="std std-doc">Laboratory Task 2 — Forward Pass &amp; Error</span></a></strong>
 Manually computing a single forward pass through a small neural network (3 inputs, 2 hidden
 units, 1 output) using ReLU activation, and calculating the resulting error.</p></li>
 <li><p><strong><a class="reference internal" href="laboratory_task_3.html"><span class="std std-doc">Laboratory Task 3 — Forward &amp; Backward Propagation</span></a></strong>
-Extending Task 2 with a full backward pass computing error signals, gradients, and updating
+Extending Task 2 with a full backward pass — computing error signals, gradients, and updating
 the network’s weights and biases by hand using gradient descent.</p></li>
 <li><p><strong><a class="reference internal" href="laboratory_task_4.html"><span class="std std-doc">Laboratory Task 4 — Linear Regression in PyTorch</span></a></strong>
 Training a small feed-forward regression model (2 fully connected layers, MSE loss, SGD,
 batch size 8, 1000 epochs) on the sklearn Diabetes dataset, with loss curves and a
 predicted-vs-actual evaluation plot.</p></li>
+<li><p><strong><a class="reference internal" href="laboratory_task_5.html"><span class="std std-doc">Laboratory Task 5 — PyTorch Tensor Basics</span></a></strong>
+Core tensor operations in PyTorch: seeding for reproducibility, converting between NumPy arrays
+and tensors, changing dtypes, reshaping, slicing, element-wise squares, and matrix
+multiplication.</p></li>
+</ul>
+</section>
+<section id="computer-vision">
+<h2>Computer Vision<a class="headerlink" href="#computer-vision" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Laboratory_Exercise.html"><span class="std std-doc">Laboratory Exercise — Image Classification Using Pre-trained Models</span></a></strong>
+Comparing five pre-trained torchvision models (ResNet18, MobileNetV3-Small, EfficientNet-B0,
+AlexNet, VGG16) on a cat-versus-dog task using the Oxford-IIIT Pet dataset, evaluated with
+accuracy, precision, recall, and F1-score. VGG16 scored highest on this sample.</p></li>
 </ul>
 <p>More projects coming soon as the semester progresses.</p>
 </section>
@@ -539,6 +557,7 @@ predicted-vs-actual evaluation plot.</p></li>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-fundamentals">Deep Learning Fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-vision">Computer Vision</a></li>
 </ul>
   </nav></div>
 

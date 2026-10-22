@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laboratory Exercise: Image Classification Using Pre-trained Models &#8212; Data Science Portfolio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ff8b52e0" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Laboratory_Exercise';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="_static/custom.js?v=26247397"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Summary" href="laboratory_task_5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science Portfolio</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Vincent Omar Galorio
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="projects.html">Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="laboratory_task_2.html">Network Setup</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="laboratory_task_3.html">Network Setup</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="laboratory_task_4.html">Dataset</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="laboratory_task_5.html">Summary</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratory Exercise: Image Classification Using Pre-trained Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/haruki2-sudo/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/haruki2-sudo/ds-portfolio/issues/new?title=Issue%20on%20page%20%2FLaboratory_Exercise.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Laboratory_Exercise.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laboratory Exercise: Image Classification Using Pre-trained Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">1. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-prepare-the-dataset">2. Download and prepare the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataloader">3. Create the DataLoader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-five-pre-trained-models">4. Load five pre-trained models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-results-in-a-table-and-chart">5. Compare results in a table and chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report-for-the-best-f1-score-model">6. Classification report for the best F1-score model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-analysis-and-conclusion">7. Short analysis and conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratory-exercise-image-classification-using-pre-trained-models">
+<h1>Laboratory Exercise: Image Classification Using Pre-trained Models<a class="headerlink" href="#laboratory-exercise-image-classification-using-pre-trained-models" title="Link to this heading">#</a></h1>
+<p><strong>Environment:</strong> Google Colab<br />
+<strong>Dataset:</strong> Oxford-IIIT Pet Dataset (cats and dogs)<br />
+<strong>Task:</strong> Compare five pre-trained <code class="docutils literal notranslate"><span class="pre">torchvision.models</span></code> using accuracy, precision, recall, and F1-score.</p>
+<section id="import-libraries">
+<h2>1. Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">Subset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span><span class="p">,</span> <span class="n">models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ResNet18_Weights</span><span class="p">,</span> <span class="n">MobileNet_V3_Small_Weights</span><span class="p">,</span>
+    <span class="n">EfficientNet_B0_Weights</span><span class="p">,</span> <span class="n">AlexNet_Weights</span><span class="p">,</span> <span class="n">VGG16_Weights</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="n">SEED</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"cpu"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Device:"</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device: cpu
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-and-prepare-the-dataset">
+<h2>2. Download and prepare the dataset<a class="headerlink" href="#download-and-prepare-the-dataset" title="Link to this heading">#</a></h2>
+<p>We use the <strong>Oxford-IIIT Pet Dataset</strong>, which includes cat and dog breeds. We convert each breed label into one of two classes: <code class="docutils literal notranslate"><span class="pre">cat</span></code> or <code class="docutils literal notranslate"><span class="pre">dog</span></code>.</p>
+<p>The model input size and normalization are taken from each model’s official pre-trained weights, so each model receives the input format it expects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the test split. The first run may take a few minutes.</span>
+<span class="n">base_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">OxfordIIITPet</span><span class="p">(</span>
+    <span class="n">root</span><span class="o">=</span><span class="s2">"/content/data"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span>
+    <span class="n">target_types</span><span class="o">=</span><span class="s2">"category"</span><span class="p">,</span>
+    <span class="n">download</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of images:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">base_dataset</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"First few breed labels:"</span><span class="p">,</span> <span class="n">base_dataset</span><span class="o">.</span><span class="n">classes</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 792M/792M [00:21&lt;00:00, 36.4MB/s]
+100%|██████████| 19.2M/19.2M [00:01&lt;00:00, 16.3MB/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of images: 3669
+First few breed labels: ['Abyssinian', 'American Bulldog', 'American Pit Bull Terrier', 'Basset Hound', 'Beagle', 'Bengal', 'Birman', 'Bombay', 'Boxer', 'British Shorthair']
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Breed names that belong to the cat class in Oxford-IIIT Pet.</span>
+<span class="n">cat_breeds</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Abyssinian"</span><span class="p">,</span> <span class="s2">"Bengal"</span><span class="p">,</span> <span class="s2">"Birman"</span><span class="p">,</span> <span class="s2">"Bombay"</span><span class="p">,</span> <span class="s2">"British_Shorthair"</span><span class="p">,</span>
+    <span class="s2">"Egyptian_Mau"</span><span class="p">,</span> <span class="s2">"Maine_Coon"</span><span class="p">,</span> <span class="s2">"Persian"</span><span class="p">,</span> <span class="s2">"Ragdoll"</span><span class="p">,</span> <span class="s2">"Russian_Blue"</span><span class="p">,</span>
+    <span class="s2">"Siamese"</span><span class="p">,</span> <span class="s2">"Sphynx"</span>
+<span class="p">}</span>
+
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CatDogDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Wrap Oxford-IIIT Pet and return an image plus a binary cat/dog label."""</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">image</span><span class="p">,</span> <span class="n">breed_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">breed_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">classes</span><span class="p">[</span><span class="n">breed_label</span><span class="p">]</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">breed_name</span> <span class="ow">in</span> <span class="n">cat_breeds</span> <span class="k">else</span> <span class="mi">1</span>  <span class="c1"># 0=cat, 1=dog</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">:</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span>
+
+<span class="c1"># Use one consistent sample for every model.</span>
+<span class="c1"># Select up to 100 cat images and 100 dog images for a quick comparison.</span>
+<span class="n">raw_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">breed_label</span> <span class="ow">in</span> <span class="n">base_dataset</span><span class="p">:</span>
+    <span class="n">breed_name</span> <span class="o">=</span> <span class="n">base_dataset</span><span class="o">.</span><span class="n">classes</span><span class="p">[</span><span class="n">breed_label</span><span class="p">]</span>
+    <span class="n">raw_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">breed_name</span> <span class="ow">in</span> <span class="n">cat_breeds</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cat_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">raw_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">dog_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">raw_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">sample_count_per_class</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cat_indices</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dog_indices</span><span class="p">))</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">chosen_indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">cat_indices</span><span class="p">,</span> <span class="n">sample_count_per_class</span><span class="p">)</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">dog_indices</span><span class="p">,</span> <span class="n">sample_count_per_class</span><span class="p">)</span>
+<span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">chosen_indices</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Cats:"</span><span class="p">,</span> <span class="n">sample_count_per_class</span><span class="p">,</span> <span class="s2">"| Dogs:"</span><span class="p">,</span> <span class="n">sample_count_per_class</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Total evaluation images:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">chosen_indices</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cats: 100 | Dogs: 100
+Total evaluation images: 200
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-the-dataloader">
+<h2>3. Create the DataLoader<a class="headerlink" href="#create-the-dataloader" title="Link to this heading">#</a></h2>
+<p>Each model has its own official preprocessing transform. We use the same selected images for a fair comparison, but resize and normalize them according to each model’s expected input requirements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_loader</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+    <span class="n">preprocess</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">transforms</span><span class="p">()</span>
+    <span class="n">wrapped_dataset</span> <span class="o">=</span> <span class="n">CatDogDataset</span><span class="p">(</span><span class="n">base_dataset</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">preprocess</span><span class="p">)</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">Subset</span><span class="p">(</span><span class="n">wrapped_dataset</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Labels are the same regardless of model preprocessing.</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="n">raw_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">chosen_indices</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Label mapping:"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">"cat"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">"dog"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Label mapping: {0: 'cat', 1: 'dog'}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-five-pre-trained-models">
+<h2>4. Load five pre-trained models<a class="headerlink" href="#load-five-pre-trained-models" title="Link to this heading">#</a></h2>
+<p>These models were trained on ImageNet, not specifically on this cat/dog dataset. We use their ImageNet predictions and map relevant ImageNet labels into <code class="docutils literal notranslate"><span class="pre">cat</span></code> or <code class="docutils literal notranslate"><span class="pre">dog</span></code>. Predictions that do not match a cat or dog label are treated as the model’s more likely class only if its top prediction is a recognized cat/dog label; otherwise the notebook uses a simple fallback based on the strongest cat-vs-dog score across ImageNet labels.</p>
+<p>This is <strong>zero-shot evaluation</strong>: no additional training is performed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_configs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"ResNet18"</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">,</span> <span class="n">ResNet18_Weights</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"MobileNetV3-Small"</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">mobilenet_v3_small</span><span class="p">,</span> <span class="n">MobileNet_V3_Small_Weights</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"EfficientNet-B0"</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">efficientnet_b0</span><span class="p">,</span> <span class="n">EfficientNet_B0_Weights</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"AlexNet"</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">alexnet</span><span class="p">,</span> <span class="n">AlexNet_Weights</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"VGG16"</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">vgg16</span><span class="p">,</span> <span class="n">VGG16_Weights</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># ImageNet class names associated with cats and dogs.</span>
+<span class="c1"># This broad matching captures common cat/dog labels in the ImageNet class list.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_cat_label</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">n</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s2">"tabby"</span><span class="p">,</span> <span class="s2">"tiger cat"</span><span class="p">,</span> <span class="s2">"persian cat"</span><span class="p">,</span> <span class="s2">"siamese cat"</span><span class="p">,</span> <span class="s2">"egyptian cat"</span><span class="p">,</span>
+        <span class="s2">"cougar"</span><span class="p">,</span> <span class="s2">"lynx"</span><span class="p">,</span> <span class="s2">"leopard"</span><span class="p">,</span> <span class="s2">"jaguar"</span><span class="p">,</span> <span class="s2">"lion"</span><span class="p">,</span> <span class="s2">"tiger"</span><span class="p">,</span> <span class="s2">"cheetah"</span><span class="p">,</span>
+        <span class="s2">"house cat"</span>
+    <span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_dog_label</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">dog_terms</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"terrier"</span><span class="p">,</span> <span class="s2">"retriever"</span><span class="p">,</span> <span class="s2">"shepherd"</span><span class="p">,</span> <span class="s2">"spaniel"</span><span class="p">,</span> <span class="s2">"hound"</span><span class="p">,</span>
+        <span class="s2">"poodle"</span><span class="p">,</span> <span class="s2">"collie"</span><span class="p">,</span> <span class="s2">"chihuahua"</span><span class="p">,</span> <span class="s2">"husky"</span><span class="p">,</span> <span class="s2">"malamute"</span><span class="p">,</span> <span class="s2">"rottweiler"</span><span class="p">,</span>
+        <span class="s2">"doberman"</span><span class="p">,</span> <span class="s2">"boxer"</span><span class="p">,</span> <span class="s2">"beagle"</span><span class="p">,</span> <span class="s2">"pug"</span><span class="p">,</span> <span class="s2">"mastiff"</span><span class="p">,</span> <span class="s2">"corgi"</span><span class="p">,</span> <span class="s2">"dachshund"</span><span class="p">,</span>
+        <span class="s2">"schnauzer"</span><span class="p">,</span> <span class="s2">"setter"</span><span class="p">,</span> <span class="s2">"pointer"</span><span class="p">,</span> <span class="s2">"samoyed"</span><span class="p">,</span> <span class="s2">"akita"</span><span class="p">,</span> <span class="s2">"basenji"</span><span class="p">,</span>
+        <span class="s2">"briard"</span><span class="p">,</span> <span class="s2">"kelpie"</span><span class="p">,</span> <span class="s2">"papillon"</span><span class="p">,</span> <span class="s2">"pekinese"</span><span class="p">,</span> <span class="s2">"pomeranian"</span><span class="p">,</span> <span class="s2">"whippet"</span><span class="p">,</span>
+        <span class="s2">"wolfhound"</span><span class="p">,</span> <span class="s2">"bloodhound"</span><span class="p">,</span> <span class="s2">"basset"</span><span class="p">,</span> <span class="s2">"affenpinscher"</span><span class="p">,</span> <span class="s2">"eskimo dog"</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">n</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">dog_terms</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_cat_dog_indices</span><span class="p">(</span><span class="n">categories</span><span class="p">):</span>
+    <span class="n">cat_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_cat_label</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+    <span class="n">dog_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_dog_label</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">cat_ids</span><span class="p">,</span> <span class="n">dog_ids</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">all_predictions</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model_fn</span><span class="p">,</span> <span class="n">weights</span> <span class="ow">in</span> <span class="n">model_configs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Evaluating </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model_fn</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="n">categories</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">"categories"</span><span class="p">]</span>
+    <span class="n">cat_ids</span><span class="p">,</span> <span class="n">dog_ids</span> <span class="o">=</span> <span class="n">get_cat_dog_indices</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">make_loader</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">chosen_indices</span><span class="p">)</span>
+
+    <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Sum probability across ImageNet labels that indicate cat-like or dog-like classes.</span>
+            <span class="n">cat_score</span> <span class="o">=</span> <span class="n">probs</span><span class="p">[:,</span> <span class="n">cat_ids</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">dog_score</span> <span class="o">=</span> <span class="n">probs</span><span class="p">[:,</span> <span class="n">dog_ids</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">batch_preds</span> <span class="o">=</span> <span class="p">(</span><span class="n">dog_score</span> <span class="o">&gt;</span> <span class="n">cat_score</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">predictions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">batch_preds</span><span class="p">)</span>
+
+    <span class="n">all_predictions</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s2">"Model"</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+        <span class="s2">"Accuracy"</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">predictions</span><span class="p">),</span>
+        <span class="s2">"Precision"</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"Recall"</span><span class="p">:</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"F1-score"</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="k">del</span> <span class="n">model</span>
+    <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"F1-score"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluating ResNet18...
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 44.7M/44.7M [00:00&lt;00:00, 134MB/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluating MobileNetV3-Small...
+Downloading: "https://download.pytorch.org/models/mobilenet_v3_small-047dcff4.pth" to /root/.cache/torch/hub/checkpoints/mobilenet_v3_small-047dcff4.pth
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 9.83M/9.83M [00:00&lt;00:00, 55.2MB/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluating EfficientNet-B0...
+Downloading: "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth" to /root/.cache/torch/hub/checkpoints/efficientnet_b0_rwightman-7f5810bc.pth
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 20.5M/20.5M [00:00&lt;00:00, 126MB/s] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluating AlexNet...
+Downloading: "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth" to /root/.cache/torch/hub/checkpoints/alexnet-owt-7be5be79.pth
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 233M/233M [00:01&lt;00:00, 150MB/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluating VGG16...
+Downloading: "https://download.pytorch.org/models/vgg16-397923af.pth" to /root/.cache/torch/hub/checkpoints/vgg16-397923af.pth
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 528M/528M [00:08&lt;00:00, 64.1MB/s]
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-9af99dff-adc0-4d34-afe2-c264a34f22df" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1-score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>VGG16</td>
+      <td>0.870</td>
+      <td>0.863</td>
+      <td>0.88</td>
+      <td>0.871</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>EfficientNet-B0</td>
+      <td>0.860</td>
+      <td>0.846</td>
+      <td>0.88</td>
+      <td>0.863</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MobileNetV3-Small</td>
+      <td>0.855</td>
+      <td>0.838</td>
+      <td>0.88</td>
+      <td>0.859</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ResNet18</td>
+      <td>0.850</td>
+      <td>0.830</td>
+      <td>0.88</td>
+      <td>0.854</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AlexNet</td>
+      <td>0.815</td>
+      <td>0.779</td>
+      <td>0.88</td>
+      <td>0.826</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9af99dff-adc0-4d34-afe2-c264a34f22df')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-9af99dff-adc0-4d34-afe2-c264a34f22df button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9af99dff-adc0-4d34-afe2-c264a34f22df');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="compare-results-in-a-table-and-chart">
+<h2>5. Compare results in a table and chart<a class="headerlink" href="#compare-results-in-a-table-and-chart" title="Link to this heading">#</a></h2>
+<p>The metrics treat <code class="docutils literal notranslate"><span class="pre">dog</span></code> as the positive class. Precision measures how many predicted dogs were actually dogs; recall measures how many actual dogs were detected; F1-score balances precision and recall.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">plot_df</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Model"</span><span class="p">)[[</span><span class="s2">"Accuracy"</span><span class="p">,</span> <span class="s2">"Precision"</span><span class="p">,</span> <span class="s2">"Recall"</span><span class="p">,</span> <span class="s2">"F1-score"</span><span class="p">]]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Pre-trained Model Comparison: Cat vs Dog"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Score"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Model"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-edd86e39-4e7d-4061-ab55-567620f3ac98" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1-score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>VGG16</td>
+      <td>0.870</td>
+      <td>0.863</td>
+      <td>0.88</td>
+      <td>0.871</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>EfficientNet-B0</td>
+      <td>0.860</td>
+      <td>0.846</td>
+      <td>0.88</td>
+      <td>0.863</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MobileNetV3-Small</td>
+      <td>0.855</td>
+      <td>0.838</td>
+      <td>0.88</td>
+      <td>0.859</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ResNet18</td>
+      <td>0.850</td>
+      <td>0.830</td>
+      <td>0.88</td>
+      <td>0.854</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AlexNet</td>
+      <td>0.815</td>
+      <td>0.779</td>
+      <td>0.88</td>
+      <td>0.826</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-edd86e39-4e7d-4061-ab55-567620f3ac98')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-edd86e39-4e7d-4061-ab55-567620f3ac98 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-edd86e39-4e7d-4061-ab55-567620f3ac98');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    </div>
+  </div>
+</div><img alt="_images/bb2d63f51257fc87c9f4fb7416b8d9f61669ae81be21870c4a99a5b98d864357.png" src="_images/bb2d63f51257fc87c9f4fb7416b8d9f61669ae81be21870c4a99a5b98d864357.png" />
+</div>
+</div>
+</section>
+<section id="classification-report-for-the-best-f1-score-model">
+<h2>6. Classification report for the best F1-score model<a class="headerlink" href="#classification-report-for-the-best-f1-score-model" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"Model"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Best model by F1-score:"</span><span class="p">,</span> <span class="n">best_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span>
+    <span class="n">all_predictions</span><span class="p">[</span><span class="n">best_model</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">],</span>
+    <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best model by F1-score: VGG16
+              precision    recall  f1-score   support
+
+         cat       0.88      0.86      0.87       100
+         dog       0.86      0.88      0.87       100
+
+    accuracy                           0.87       200
+   macro avg       0.87      0.87      0.87       200
+weighted avg       0.87      0.87      0.87       200
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="short-analysis-and-conclusion">
+<h2>7. Short analysis and conclusion<a class="headerlink" href="#short-analysis-and-conclusion" title="Link to this heading">#</a></h2>
+<p><strong>Analysis template:</strong> After running the notebook, use the printed table and chart to identify the model with the highest accuracy and F1-score. The five models may perform differently because their architectures and ImageNet training differ. ResNet18 uses residual connections, MobileNetV3-Small is designed to be lightweight, EfficientNet-B0 balances depth and width, while AlexNet and VGG16 use older convolutional designs and can be slower or more memory-intensive.</p>
+<p>The evaluation is based on ImageNet pre-trained predictions without fine-tuning. Since the Oxford-IIIT Pet images contain specific breeds and backgrounds, ImageNet label mapping may not perfectly represent every image. The sample is small, so results are illustrative rather than definitive.</p>
+<p><strong>Conclusion template:</strong> The experiment demonstrates how pre-trained torchvision models can be evaluated for a cat-versus-dog task using a custom PyTorch Dataset, DataLoader, and standard classification metrics. The best model should be selected based on the actual results printed above, while also considering inference speed and model size. For stronger task-specific performance, the models could be fine-tuned on labeled cat and dog images and evaluated on a larger held-out test set.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="laboratory_task_5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Summary</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">1. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-prepare-the-dataset">2. Download and prepare the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataloader">3. Create the DataLoader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-five-pre-trained-models">4. Load five pre-trained models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-results-in-a-table-and-chart">5. Compare results in a table and chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report-for-the-best-f1-score-model">6. Classification report for the best F1-score model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-analysis-and-conclusion">7. Short analysis and conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vincent Omar Galorio
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
